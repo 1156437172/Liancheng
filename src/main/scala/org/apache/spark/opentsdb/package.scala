@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 CGnal S.p.A.
+ * Copyright 2017 Team per la Trasformazione Digitale
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cgnal.spark
+package org.apache.spark
 
 import java.nio.ByteBuffer
 import java.sql.Timestamp
@@ -282,11 +282,11 @@ package object opentsdb {
   }
 
   implicit class OpenTSDBDataFrameReader(reader: DataFrameReader) {
-    def opentsdb: DataFrame = reader.format("com.cgnal.spark.opentsdb").load
+    def opentsdb: DataFrame = reader.format("org.apache.spark.opentsdb").load
   }
 
   implicit class OpenTSDBDataFrameWriter(writer: DataFrameWriter[Row]) {
-    def opentsdb(): Unit = writer.format("com.cgnal.spark.opentsdb").save
+    def opentsdb(): Unit = writer.format("org.apache.spark.opentsdb").save
   }
 
   @SuppressWarnings(Array("org.wartremover.warts.ImplicitParameter"))

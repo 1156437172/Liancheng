@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 CGnal S.p.A.
+ * Copyright 2017 Team per la Trasformazione Digitale
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cgnal.spark.opentsdb
+package org.apache.spark.opentsdb
 
 import java.io.File
 import java.nio.file.{ Files, Paths }

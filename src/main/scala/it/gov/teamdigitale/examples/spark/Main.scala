@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 CGnal S.p.A.
+ * Copyright 2017 Team per la Trasformazione Digitale
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package com.cgnal.examples.spark
+package it.gov.teamdigitale.examples.spark
 
 import java.io.File
+import java.net.{ URL, URLClassLoader }
 import java.sql.Timestamp
 import java.time.Instant
 
-import com.cgnal.spark.opentsdb._
 import org.apache.spark.SparkConf
+import org.apache.spark.opentsdb.{ DataPoint, OpenTSDBContext, _ }
 import org.apache.spark.sql.{ SQLContext, SparkSession }
 
 import scala.util.Random
@@ -34,11 +35,25 @@ import scala.util.Random
   --conf spark.executor.extraClassPath=/etc/hbase/conf:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/hbase-server-1.2.0-cdh5.10.0.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/hbase-client-1.2.0-cdh5.10.0.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/hbase-hadoop-compat-1.2.0-cdh5.10.0.jar \
   --conf spark.executor.extraJavaOptions=-Djava.security.auth.login.config=/tmp/jaas.conf \
   --master yarn --deploy-mode client \
-  --class com.cgnal.examples.spark.Main spark-opentsdb-assembly-2.0.jar xxxx dgreco.keytab dgreco@DGRECO-MBP.LOCAL
+  --class it.gov.teamdigitale.examples.spark.Main spark-opentsdb-assembly-2.0.jar xxxx dgreco.keytab dgreco@DGRECO-MBP.LOCAL
  */
 
 @SuppressWarnings(Array("org.wartremover.warts.NonUnitStatements", "org.wartremover.warts.PublicInference"))
 object Main extends App {
+
+  @SuppressWarnings(Array("org.wartremover.warts.NonUnitStatements"))
+  def addPath(dir: String): Unit = {
+    val method = classOf[URLClassLoader].getDeclaredMethod("addURL", classOf[URL])
+    method.setAccessible(true)
+    method.invoke(Thread.currentThread().getContextClassLoader, new File(dir).toURI.toURL)
+    ()
+  }
+
+  //given a class it returns the jar (in the classpath) containing that class
+  def getJar(klass: Class[_]): String = {
+    val codeSource = klass.getProtectionDomain.getCodeSource
+    codeSource.getLocation.getPath
+  }
 
   val yarn = false
 

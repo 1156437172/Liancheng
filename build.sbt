@@ -1,12 +1,12 @@
 /*
- * Copyright 2016 CGnal S.p.A.
+ * Copyright 2017 Team per la Trasformazione Digitale
  *
  */
 
 import de.heikoseeberger.sbtheader.license.Apache2_0
 import sbt.{ExclusionRule, _}
 
-organization := "com.cgnal.spark"
+organization := "org.apache.spark.opentsdb"
 
 name := "spark-opentsdb"
 
@@ -190,10 +190,10 @@ lazy val root = (project in file(".")).
       "net.opentsdb" % "opentsdb-shaded" % openTSDBVersion % "test"
     ),
     headers := Map(
-      "sbt" -> Apache2_0("2016", "CGnal S.p.A."),
-      "scala" -> Apache2_0("2016", "CGnal S.p.A."),
-      "conf" -> Apache2_0("2016", "CGnal S.p.A.", "#"),
-      "properties" -> Apache2_0("2016", "CGnal S.p.A.", "#")
+      "sbt" -> Apache2_0("2017", "Team per la Trasformazione Digitale"),
+      "scala" -> Apache2_0("2017", "Team per la Trasformazione Digitale"),
+      "conf" -> Apache2_0("2017", "Team per la Trasformazione Digitale", "#"),
+      "properties" -> Apache2_0("2017", "Team per la Trasformazione Digitale", "#")
     )
   ).
   enablePlugins(AutomateHeaderPlugin).

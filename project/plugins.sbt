@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 CGnal S.p.A.
+ * Copyright 2017 Team per la Trasformazione Digitale
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
