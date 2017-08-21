@@ -131,7 +131,7 @@ object TSDBClientManager {
       config.overrideConfig("tsd.core.auto_create_metrics", autoCreateMetrics.toString)
       config.overrideConfig("tsd.storage.uid.width.metric", metricWidth.toString)
       config.overrideConfig("tsd.storage.uid.width.tagk", tagkWidth.toString)
-      config.overrideConfig("tsd.storage.uid.width.tagk", tagvWidth.toString)
+      config.overrideConfig("tsd.storage.uid.width.tagv", tagvWidth.toString)
       config.overrideConfig("tsd.core.preload_uid_cache", preloadUidCache.toString)
       config.overrideConfig("tsd.core.preload_uid_cache.max_entries", preloadUidCacheMaxEntries.toString)
       if (saltWidth > 0) {
