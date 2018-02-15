@@ -147,7 +147,7 @@ lazy val mainRunner = project.in(file("mainRunner")).dependsOn(RootProject(file(
       }
   }
 )
-isSnapshot := false 
+isSnapshot := false
 
 //http://stackoverflow.com/questions/18838944/how-to-add-provided-dependencies-back-to-run-test-tasks-classpath/21803413#21803413
 run in Compile := Defaults.runTask(fullClasspath in Compile, mainClass in(Compile, run), runner in(Compile, run))
@@ -233,11 +233,11 @@ deployShadedLibraries <<= deployShadedLibraries dependsOn deployShadedLibraries
 compile in Compile <<= compile in Compile dependsOn buildShadedLibraries //Uncomment this if you want to rebuild the shahded libraries every time you compile/test the project
 
 publishTo := {
-  val nexus = "http://nexus.default.svc.cluster.local:8081/repository/"
+  val nexus = "http://nexus.daf.teamdigitale.it/repository/"
   if (isSnapshot.value)
     Some("snapshots" at nexus + "maven-snapshots/")
   else
-    Some("releases"  at nexus + "maven-releases/")
+    Some("releases" at nexus + "maven-releases/")
 }
 
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
